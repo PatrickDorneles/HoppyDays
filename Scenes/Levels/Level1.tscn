@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Entities/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Resources/GFX/Environment/ground_grass_small.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -9,7 +9,6 @@ extents = Vector2( 204.298, 93.7259 )
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 570.037, 271.943 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 383.385, 241.366 )
