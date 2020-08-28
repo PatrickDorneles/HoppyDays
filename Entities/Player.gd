@@ -5,13 +5,14 @@ var motion = Vector2(0,0);
 const SPEED = 1000;
 const GRAVITY = 250;
 const UP = Vector2(0, -1);
-const JUMP_SPEED = 3000;
+const JUMP_SPEED = 4000;
 
 
 func _physics_process(delta):
 	apply_gravity();
 	jump();
 	move();
+	animate()
 	move_and_slide(motion, UP);
 
 func apply_gravity():
@@ -21,8 +22,20 @@ func apply_gravity():
 
 	motion.y = 0;
 
+func animate():
+	if motion.y < 0:
+		$AnimatedSprite.play("jump");
+	elif motion.x > 0:
+		$AnimatedSprite.flip_h = false;
+		$AnimatedSprite.play("walk");
+	elif motion.x < 0:
+		$AnimatedSprite.flip_h = true;
+		$AnimatedSprite.play("walk");
+	else:
+		$AnimatedSprite.play("idle");
+	
 func jump():
-	if Input.is_action_just_pressed("jump") and is_on_floor(): 
+	if Input.is_action_pressed("jump") and is_on_floor(): 
 		motion.y -= JUMP_SPEED;
 
 func move():
