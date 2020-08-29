@@ -1,73 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Resources/GFX/Environment/ground_grass_small.png" type="Texture" id=2]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 204.298, 93.7259 )
+[ext_resource path="res://Scenes/Levels/TileSet.tres" type="TileSet" id=2]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -648.443, -47.6256 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 383.385, 241.366 )
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D"]
-position = Vector2( 192.642, 358.182 )
-scale = Vector2( 2.16675, 2.02659 )
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 193.895, 352.248 )
-shape = SubResource( 1 )
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2( -18.706, 241.366 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D2"]
-position = Vector2( 192.642, 358.182 )
-scale = Vector2( 2.16675, 2.02659 )
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2( 193.895, 352.248 )
-shape = SubResource( 1 )
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2( 939.901, -0.958069 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D3"]
-position = Vector2( 192.642, 358.182 )
-scale = Vector2( 2.16675, 2.02659 )
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2( 193.895, 352.248 )
-shape = SubResource( 1 )
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="."]
-position = Vector2( -485.537, 383.91 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D4"]
-position = Vector2( 192.642, 358.182 )
-scale = Vector2( 2.16675, 2.02659 )
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
-position = Vector2( 193.895, 352.248 )
-shape = SubResource( 1 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 566.615, 279.438 )
-current = true
-zoom = Vector2( 2, 2 )
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2( -736.554, -22.2236 )
+tile_set = ExtResource( 2 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( 262142, 0, 0, 327684, 0, 0, 327721, 3, 0, 393227, 0, 0, 524307, 1, 0, 524314, 1, 0, 524325, 3, 0, 655390, 0, 0, 917525, 0, 0, 1114125, 0, 0, 1310728, 3, 0, 1507340, 1, 0, 1638416, 0, 0, 1638426, 5, 0, 1638478, 3, 0, 1638488, 3, 0, 1638502, 2, 0, 1638561, 3, 0, 1638567, 0, 0, 1835127, 3, 0, 1835165, 3, 0, 1900615, 7, 0, 2031691, 3, 0, 2031727, 2, 0, 2031745, 3, 0, 2031752, 3, 0, 2031759, 3, 0, 2097218, 7, 0, 2162745, 6, 0, 2162768, 3, 0, 2162812, 3, 0, 2162845, 3, 0, 2228273, 6, 0, 2359382, 3, 0, 2359439, 3, 0, 2424926, 2, 0, 2490525, 3, 0, 2818191, 3, 0, 2818199, 2, 0 )
