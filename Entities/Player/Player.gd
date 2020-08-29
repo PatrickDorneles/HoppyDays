@@ -17,9 +17,14 @@ func _physics_process(delta):
 	move_and_slide(motion, UP);
 
 func apply_gravity():
+	if is_on_ceiling():
+		motion.y = 1;
+		return
+
 	if not is_on_floor():
 		motion.y += GRAVITY;
 		return
+	
 
 	motion.y = 0;
 
