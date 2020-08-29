@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Entities/Player/PlayerAnimation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=2]
@@ -7,20 +7,22 @@
 [ext_resource path="res://Resources/GFX/Background/bg_layer2.png" type="Texture" id=5]
 [ext_resource path="res://Resources/GFX/Background/bg_layer3.png" type="Texture" id=6]
 [ext_resource path="res://Resources/GFX/Background/bg_layer4.png" type="Texture" id=7]
+[ext_resource path="res://Resources/SFX/jump1.ogg" type="AudioStream" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 61.5
 height = 78.0
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( -0.784643, -0.00404453 )
-collision_mask = 2
+position = Vector2( 0.215357, -0.00404453 )
+collision_mask = 6
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="PlayerAnimation" parent="." instance=ExtResource( 1 )]
+frame = 0
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -84,4 +86,13 @@ texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PlayerSFXs" type="Node" parent="."]
+
+[node name="JumpSFX" type="AudioStreamPlayer" parent="PlayerSFXs"]
+stream = ExtResource( 8 )
+volume_db = -20.0
+
+[node name="PainSFX" type="AudioStreamPlayer" parent="PlayerSFXs"]
+volume_db = -20.0
 [connection signal="animate" from="." to="PlayerAnimation" method="_on_Player_animate"]

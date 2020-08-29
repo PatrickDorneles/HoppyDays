@@ -8,6 +8,8 @@ const UP = Vector2(0, -1);
 const JUMP_SPEED = 2000;
 const WORLD_LIMIT = 4000;
 
+var lives = 3;
+
 signal animate;
 
 func _physics_process(delta):
@@ -38,6 +40,9 @@ func animate():
 func jump():
 	if Input.is_action_pressed("jump") and is_on_floor(): 
 		motion.y -= JUMP_SPEED;
+		$PlayerSFXs/JumpSFX.stream = load("res://Resources/SFX/jump1.ogg");
+		$PlayerSFXs/JumpSFX.stream.loop = false;
+		$PlayerSFXs/JumpSFX.play()
 
 func move():
 	if Input.is_action_pressed("left") and not Input.is_action_pressed("right"):
@@ -49,3 +54,17 @@ func move():
 
 func end_game():
 	get_tree().change_scene("res://Scenes/Levels/GameOver.tscn");
+
+func hurt():
+	$PlayerSFXs/PainSFX.stream = load("res://Resources/SFX/pain.ogg");
+	$PlayerSFXs/PainSFX.stream.loop = false;
+	$PlayerSFXs/PainSFX.play();
+
+	position.y -= 1;
+	yield(get_tree(), "idle_frame");
+	motion.y -= JUMP_SPEED;
+	lives -= 1;
+	
+	
+	if lives == 0:
+		end_game();
