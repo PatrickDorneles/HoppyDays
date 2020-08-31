@@ -11,12 +11,12 @@ const BOOST_MULTIPLIER = 1.5;
 
 signal animate;
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	apply_gravity();
 	jump();
 	move();
 	animate()
-	move_and_slide(motion, UP);
+	return move_and_slide(motion, UP);
 
 func apply_gravity():
 	if position.y > WORLD_LIMIT:
@@ -30,8 +30,9 @@ func apply_gravity():
 		motion.y += GRAVITY;
 		return
 	
+	if is_on_floor() and motion.y > 0:
+		motion.y = 0;
 
-	motion.y = 0;
 
 func animate():
 	emit_signal("animate", motion);
